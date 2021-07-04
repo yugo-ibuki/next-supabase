@@ -1,5 +1,4 @@
 import { FC } from "react";
-import {log} from "util";
 
 type IProps = {
     onSubmit: any;
@@ -20,6 +19,7 @@ export const Form: FC<IProps> = ({ onSubmit, buttonText, inputList , register}) 
                     <input
                         {...props}
                         {...register(props.name, { required: true })}
+                        className="border-2 border-gray-100 block"
                     />
                 </label>
             ))}

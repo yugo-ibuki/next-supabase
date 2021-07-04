@@ -1,3 +1,4 @@
+import '../styles/globals.css'
 import { AppProps } from "next/app";
 import { supabase } from "../util/supabase";
 import { useRouter } from "next/router";
@@ -28,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-      <>
+      <main>
         {loading ? (
             <h1>loading...</h1>
         ) : (
@@ -37,6 +38,6 @@ export default function App({ Component, pageProps }: AppProps) {
               <Component {...pageProps} />
             </>
         )}
-      </>
+      </main>
   );
 }
