@@ -10,7 +10,7 @@ type IProps = {
     }[];
 };
 
-export const Form: FC<IProps> = ({ onSubmit, buttonText, inputList , register}) => {
+export const Form: FC<IProps> = ({ onSubmit, buttonText, inputList, register}) => {
     return (
         <form onSubmit={onSubmit}>
             {inputList.map((props) => (
