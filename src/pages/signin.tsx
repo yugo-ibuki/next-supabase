@@ -10,8 +10,9 @@ type IForm = {
 
 const Signin: NextPage = () => {
     const { register, handleSubmit } = useForm<IForm>();
-    const handleSignin = ({ email, password }: IForm) => {
-        supabase.auth.signIn({ email, password });
+    const handleSignin = async ({ email, password }: IForm) => {
+        const { error } = await supabase.auth.signIn({ email, password});
+        console.log(error)
     };
 
     const inputList = [

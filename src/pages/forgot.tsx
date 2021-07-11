@@ -20,6 +20,7 @@ const Forgot: NextPage = () => {
         <Form
             onSubmit={handleSubmit(handleResetPassword)}
             inputList={inputList}
+            register={register}
             buttonText="パスワード再設定メール送信"
         />
     );
