@@ -2,16 +2,20 @@ import '../styles/globals.css'
 import { AppProps } from "next/app";
 import { supabase } from "../util/supabase";
 import { useRouter } from "next/router";
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
+import { RecoilRoot } from 'recoil'
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname, push } = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [session, setSession] = useState<boolean>(false);
 
   supabase.auth.onAuthStateChange((_, session) => {
     if (session?.user && (pathname === "/signin" || pathname === "/signup")) {
+      setSession(true)
       push("/");
     } else if (!session?.user && pathname !== "/signup") {
+      setSession(false)
       push("/signin");
     }
   });
@@ -29,13 +33,21 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-      <main>
+      <main className="w-5/12 mx-auto">
         {loading ? (
             <h1>loading...</h1>
         ) : (
             <>
-              <button onClick={() => supabase.auth.signOut()}>ログアウト</button>
-              <Component {...pageProps} />
+              {
+                session
+                    ?
+                    <button onClick={() => supabase.auth.signOut()}>ログアウト</button>
+                    :
+                    ''
+              }
+              <RecoilRoot>
+                <Component {...pageProps} />
+              </RecoilRoot>
             </>
         )}
       </main>

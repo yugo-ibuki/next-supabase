@@ -10,11 +10,11 @@ export default class MyDocument extends Document {
     render() {
         return (
             <html>
-                <Head></Head>
+                <Head />
                 <body className="custom_class">
-                <Header />
-                <Main />
-                <NextScript />
+                    <Header />
+                    <Main />
+                    <NextScript />
                 </body>
             </html>
         )

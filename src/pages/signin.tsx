@@ -21,12 +21,14 @@ const Signin: NextPage = () => {
     ];
 
     return (
-        <Form
-            onSubmit={handleSubmit(handleSignin)}
-            inputList={inputList}
-            register={register}
-            buttonText="サインイン"
-        />
+        <div>
+            <Form
+                onSubmit={handleSubmit(handleSignin)}
+                inputList={inputList}
+                register={register}
+                buttonText="サインイン"
+            />
+        </div>
     );
 };
 
