@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import { AppProps } from "next/app";
 import { supabase } from "../util/supabase";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname, push } = useRouter();
